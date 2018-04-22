@@ -1,0 +1,71 @@
+{
+  "name": "imutils",
+  "version": "1.0.0",
+  "description": "Image processing & object detection utils",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.4.3"
+  },
+  "scripts": {
+    "start": "babel src -D -d dist --watch",
+    "build": "babel src -D -d dist",
+    "prepare": "npm run build",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "coveralls": "jest --coverage && cat ./test/coverage/lcov.info | coveralls",
+    "lint": "eslint src test"
+  },
+  "author": "Olle Lauri Boström <ollebostr@gmail.com> (https://github.com/ollelauribostrom)",
+  "license": "MIT",
+  "dependencies": {
+    "shortid": "^2.2.8"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ollelauribostrom/imutils.git"
+  },
+  "keywords": [
+    "image",
+    "utils",
+    "face detection",
+    "grayscale",
+    "blur",
+    "gaussian blur",
+    "eye",
+    "face",
+    "sobel",
+    "is image",
+    "box blur",
+    "mouth",
+    "load image",
+    "image data",
+    "convert image to",
+    "convert",
+    "haar",
+    "classifiers"
+  ],
+  "bugs": {
+    "url": "https://github.com/ollelauribostrom/imutils/issues"
+  },
+  "homepage": "https://github.com/ollelauribostrom/imutils#readme",
+  "jest": {
+    "coverageDirectory": "<rootDir>/test/coverage"
+  },
+  "eslintIgnore": [
+    "/test/coverage",
+    "/src/detection"
+  ]
+}
