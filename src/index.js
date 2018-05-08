@@ -5,6 +5,7 @@ import { boxBlur, gaussianBlur, grayscale, sobel } from './filters';
 import { imageLoader, imageListLoader } from './loaders';
 import { scaleToFit } from './size';
 import isImage from './utils/isImage';
+import Feature from './utils/Feature';
 
 export {
   classifiers,
@@ -19,5 +20,6 @@ export {
   imageLoader,
   imageListLoader,
   scaleToFit,
-  isImage
+  isImage,
+  Feature
 };
