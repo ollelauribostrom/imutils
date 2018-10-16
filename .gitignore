@@ -5,8 +5,6 @@ npm-debug.log
 
 # Coverage directory
 coverage
-.nyc_output
-.coveralls.yml
 
 # Dependency directories
 node_modules
@@ -21,3 +19,4 @@ dist
 .DS_Store
 .idea
 .vscode
+benchmark/results.json
