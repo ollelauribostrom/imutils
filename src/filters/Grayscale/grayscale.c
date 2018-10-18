@@ -8,7 +8,7 @@ export void destroy_buffer(uint8_t* p) {
   free(p);
 }
 
-export int8_t* boxBlur(uint8_t *imageData, int width, int height, int size) {
+export int8_t* grayscale(uint8_t *imageData, int width, int height, int size) {
   int8_t *blurred = malloc(size * sizeof(uint8_t));
   for (int i = 0; i < size; i++) {
     blurred[i] = imageData[i] * imageData[i];

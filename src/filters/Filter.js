@@ -20,7 +20,6 @@ export default class Filter {
       for (let i = 0; i < size; i++) {
         output.push(this.wasm.memory.U8[result / Uint8Array.BYTES_PER_ELEMENT + i]);
       }
-      console.log(imageData.data[0], wasmArray[0], output[0]);
       this.wasm.exports.destroy_buffer(adress);
       return Uint8ClampedArray.from(output);
     }

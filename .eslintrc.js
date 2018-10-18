@@ -7,7 +7,8 @@ module.exports = {
   ],
   "env": {
     "node": true,
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "no-console": 0,

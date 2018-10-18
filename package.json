@@ -68,7 +68,10 @@
   },
   "homepage": "https://github.com/ollelauribostrom/imutils#readme",
   "jest": {
-    "coverageDirectory": "<rootDir>/test/coverage"
+    "coverageDirectory": "<rootDir>/test/coverage",
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js"
+    ]
   },
   "eslintIgnore": [
     "/test/coverage",

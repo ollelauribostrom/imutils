@@ -13,7 +13,7 @@ export function generateSuccessMessage(filter, language, rawTime) {
       return `Sharpened image using ${language} in ${time}ms`;
     case 'Invert':
       return `Inverted image using ${language} in ${time}ms`;
-    case 'Cool':
+    case 'Cooling':
       return `Applied a cooling filter using ${language} in ${time}ms`;
     default:
       throw new Error(`No message specified for filter: ${filter}`);
@@ -32,7 +32,7 @@ export function generateErrorMessage(filter, language) {
       return `Error while sharpening image using ${language}`;
     case 'Invert':
       return `Error while inverting image using ${language}`;
-    case 'Cool':
+    case 'Cooling':
       return `Error while applying a cooling filter using ${language}`;
     default:
       throw new Error(`No error message specified for filter: ${filter}`);
