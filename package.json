@@ -1,7 +1,7 @@
 {
   "name": "imutils",
   "version": "1.0.2",
-  "description": "Image processing & object detection utils",
+  "description": "Image processing utilities",
   "main": "dist/index.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -16,13 +16,14 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.5.1",
+    "get-pixels": "^3.3.2",
     "jest": "^22.4.3",
     "prettier": "^1.14.3",
     "prettier-eslint": "^8.8.2",
     "uint8clampedarray-utils": "^1.0.3"
   },
   "scripts": {
-    "start": "babel src -D -d dist --watch",
+    "start": "npm run compile && babel src -D -d dist --watch",
     "build": "npm run compile && babel src -D -d dist",
     "compile": "node bin/build.js",
     "benchmark": "npm run build && node bin/benchmark.js",
@@ -35,9 +36,7 @@
   "author": "Olle Lauri Boström <ollebostr@gmail.com> (https://github.com/ollelauribostrom)",
   "license": "MIT",
   "dependencies": {
-    "shortid": "^2.2.8",
-    "webassembly": "^0.11.0",
-    "get-pixels": "^3.3.2"
+    "webassembly": "^0.11.0"
   },
   "directories": {
     "test": "test"
@@ -49,22 +48,11 @@
   "keywords": [
     "image",
     "utils",
-    "face detection",
     "grayscale",
     "blur",
     "gaussian blur",
-    "eye",
-    "face",
-    "sobel",
-    "is image",
     "box blur",
-    "mouth",
-    "load image",
-    "image data",
-    "convert image to",
-    "convert",
-    "haar",
-    "classifiers"
+    "filters"
   ],
   "bugs": {
     "url": "https://github.com/ollelauribostrom/imutils/issues"
@@ -74,10 +62,10 @@
     "coverageDirectory": "<rootDir>/test/coverage",
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.js"
-    ]
+    ],
+    "testURL": "http://localhost"
   },
   "eslintIgnore": [
-    "/test/coverage",
-    "/src/detection"
+    "/test/coverage"
   ]
 }
