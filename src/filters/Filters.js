@@ -11,47 +11,45 @@ export default class Filters {
       exported: 'boxBlur',
       path: {
         wasm: 'src/filters/BoxBlur/boxBlur.wasm',
-        js: './BoxBlur/boxBlur.js',
-      },
+        js: './BoxBlur/boxBlur.js'
+      }
     });
     this.filters.Cooling = new Filter({
       exported: 'cooling',
       path: {
         wasm: 'src/filters/Cooling/cooling.wasm',
-        js: './Cooling/cooling.js',
-      },
+        js: './Cooling/cooling.js'
+      }
     });
     this.filters.GaussianBlur = new Filter({
       exported: 'gaussianBlur',
       path: {
         wasm: 'src/filters/GaussianBlur/gaussianBlur.wasm',
-        js: './GaussianBlur/gaussianBlur.js',
-      },
+        js: './GaussianBlur/gaussianBlur.js'
+      }
     });
     this.filters.Grayscale = new Filter({
       exported: 'grayscale',
       path: {
         wasm: 'src/filters/Grayscale/grayscale.wasm',
-        js: './Grayscale/grayscale.js',
-      },
+        js: './Grayscale/grayscale.js'
+      }
     });
     this.filters.Invert = new Filter({
       exported: 'invert',
       path: {
         wasm: 'src/filters/Invert/invert.wasm',
-        js: './Invert/invert.js',
-      },
+        js: './Invert/invert.js'
+      }
     });
     this.filters.Sharpen = new Filter({
       exported: 'sharpen',
       path: {
         wasm: 'src/filters/Sharpen/sharpen.wasm',
-        js: './Sharpen/sharpen.js',
-      },
+        js: './Sharpen/sharpen.js'
+      }
     });
-    for(const filter in this.filters) {
-      await this.filters[filter].build();
-    }
+    return Promise.all(Object.keys(this.filters).map(filter => this.filters[filter].build()));
   }
   async apply(type, imageData, config = {}) {
     const filter = this.filters[type];

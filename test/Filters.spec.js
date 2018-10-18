@@ -34,14 +34,16 @@ describe('Tests for Filters', () => {
       const wasmResult = await filters.apply('BoxBlur', imageData, { useWasm: true });
       await expect(diff(jsResult.value, wasmResult.value)).resolves.toEqual({
         diffCount: 0,
-        diffPercentage: 0,
+        diffPercentage: 0
       });
     });
     it('produces correct error messages', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const filterSpy = jest.spyOn(filters.filters.BoxBlur, 'apply');
       const mockError = new Error('Error from filter');
-      filterSpy.mockImplementation(() => { throw mockError; });
+      filterSpy.mockImplementation(() => {
+        throw mockError;
+      });
       const jsResult = await filters.apply('BoxBlur', imageData);
       const wasmResult = await filters.apply('BoxBlur', imageData, { useWasm: true });
       expect(jsResult.message).toEqual('Error while applying box blur using JavaScript');
@@ -54,14 +56,18 @@ describe('Tests for Filters', () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const result = await filters.apply('Cooling', imageData);
       expect(result.value).toEqual(new Uint8ClampedArray([1, 4, 9, 16]));
-      expect(result.message).toEqual(expect.stringContaining('Applied a cooling filter using JavaScript'));
+      expect(result.message).toEqual(
+        expect.stringContaining('Applied a cooling filter using JavaScript')
+      );
       expect(imageData.data).toEqual(new Uint8ClampedArray([1, 2, 3, 4]));
     });
     it('correctly applies the cooling filter using WebAssembly', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const result = await filters.apply('Cooling', imageData, { useWasm: true });
       expect(result.value).toEqual(new Uint8ClampedArray([1, 4, 9, 16]));
-      expect(result.message).toEqual(expect.stringContaining('Applied a cooling filter using WebAssembly'));
+      expect(result.message).toEqual(
+        expect.stringContaining('Applied a cooling filter using WebAssembly')
+      );
       expect(imageData.data).toEqual(new Uint8ClampedArray([1, 2, 3, 4]));
     });
     it('outputs the same results from JavaScript and WebAssembly', async () => {
@@ -70,14 +76,16 @@ describe('Tests for Filters', () => {
       const wasmResult = await filters.apply('Cooling', imageData, { useWasm: true });
       await expect(diff(jsResult.value, wasmResult.value)).resolves.toEqual({
         diffCount: 0,
-        diffPercentage: 0,
+        diffPercentage: 0
       });
     });
     it('produces correct error messages', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const filterSpy = jest.spyOn(filters.filters.Cooling, 'apply');
       const mockError = new Error('Error from filter');
-      filterSpy.mockImplementation(() => { throw mockError; });
+      filterSpy.mockImplementation(() => {
+        throw mockError;
+      });
       const jsResult = await filters.apply('Cooling', imageData);
       const wasmResult = await filters.apply('Cooling', imageData, { useWasm: true });
       expect(jsResult.message).toEqual('Error while applying a cooling filter using JavaScript');
@@ -90,14 +98,18 @@ describe('Tests for Filters', () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const result = await filters.apply('GaussianBlur', imageData);
       expect(result.value).toEqual(new Uint8ClampedArray([1, 4, 9, 16]));
-      expect(result.message).toEqual(expect.stringContaining('Applied gaussian blur using JavaScript'));
+      expect(result.message).toEqual(
+        expect.stringContaining('Applied gaussian blur using JavaScript')
+      );
       expect(imageData.data).toEqual(new Uint8ClampedArray([1, 2, 3, 4]));
     });
     it('correctly applies the gaussian blur filter using WebAssembly', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const result = await filters.apply('GaussianBlur', imageData, { useWasm: true });
       expect(result.value).toEqual(new Uint8ClampedArray([1, 4, 9, 16]));
-      expect(result.message).toEqual(expect.stringContaining('Applied gaussian blur using WebAssembly'));
+      expect(result.message).toEqual(
+        expect.stringContaining('Applied gaussian blur using WebAssembly')
+      );
       expect(imageData.data).toEqual(new Uint8ClampedArray([1, 2, 3, 4]));
     });
     it('outputs the same results from JavaScript and WebAssembly', async () => {
@@ -106,14 +118,16 @@ describe('Tests for Filters', () => {
       const wasmResult = await filters.apply('GaussianBlur', imageData, { useWasm: true });
       await expect(diff(jsResult.value, wasmResult.value)).resolves.toEqual({
         diffCount: 0,
-        diffPercentage: 0,
+        diffPercentage: 0
       });
     });
     it('produces correct error messages', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const filterSpy = jest.spyOn(filters.filters.GaussianBlur, 'apply');
       const mockError = new Error('Error from filter');
-      filterSpy.mockImplementation(() => { throw mockError; });
+      filterSpy.mockImplementation(() => {
+        throw mockError;
+      });
       const jsResult = await filters.apply('GaussianBlur', imageData);
       const wasmResult = await filters.apply('GaussianBlur', imageData, { useWasm: true });
       expect(jsResult.message).toEqual('Error while applying gaussian blur using JavaScript');
@@ -126,14 +140,18 @@ describe('Tests for Filters', () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const result = await filters.apply('Grayscale', imageData);
       expect(result.value).toEqual(new Uint8ClampedArray([1, 4, 9, 16]));
-      expect(result.message).toEqual(expect.stringContaining('Converted image to grayscale using JavaScript'));
+      expect(result.message).toEqual(
+        expect.stringContaining('Converted image to grayscale using JavaScript')
+      );
       expect(imageData.data).toEqual(new Uint8ClampedArray([1, 2, 3, 4]));
     });
     it('correctly applies the grayscale filter using WebAssembly', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const result = await filters.apply('Grayscale', imageData, { useWasm: true });
       expect(result.value).toEqual(new Uint8ClampedArray([1, 4, 9, 16]));
-      expect(result.message).toEqual(expect.stringContaining('Converted image to grayscale using WebAssembly'));
+      expect(result.message).toEqual(
+        expect.stringContaining('Converted image to grayscale using WebAssembly')
+      );
       expect(imageData.data).toEqual(new Uint8ClampedArray([1, 2, 3, 4]));
     });
     it('outputs the same results from JavaScript and WebAssembly', async () => {
@@ -142,18 +160,24 @@ describe('Tests for Filters', () => {
       const wasmResult = await filters.apply('Grayscale', imageData, { useWasm: true });
       await expect(diff(jsResult.value, wasmResult.value)).resolves.toEqual({
         diffCount: 0,
-        diffPercentage: 0,
+        diffPercentage: 0
       });
     });
     it('produces correct error messages', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const filterSpy = jest.spyOn(filters.filters.Grayscale, 'apply');
       const mockError = new Error('Error from filter');
-      filterSpy.mockImplementation(() => { throw mockError; });
+      filterSpy.mockImplementation(() => {
+        throw mockError;
+      });
       const jsResult = await filters.apply('Grayscale', imageData);
       const wasmResult = await filters.apply('Grayscale', imageData, { useWasm: true });
-      expect(jsResult.message).toEqual('Error while converting image to grayscale using JavaScript');
-      expect(wasmResult.message).toEqual('Error while converting image to grayscale using WebAssembly');
+      expect(jsResult.message).toEqual(
+        'Error while converting image to grayscale using JavaScript'
+      );
+      expect(wasmResult.message).toEqual(
+        'Error while converting image to grayscale using WebAssembly'
+      );
       filterSpy.mockRestore();
     });
   });
@@ -178,14 +202,16 @@ describe('Tests for Filters', () => {
       const wasmResult = await filters.apply('Invert', imageData, { useWasm: true });
       await expect(diff(jsResult.value, wasmResult.value)).resolves.toEqual({
         diffCount: 0,
-        diffPercentage: 0,
+        diffPercentage: 0
       });
     });
     it('produces correct error messages', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const filterSpy = jest.spyOn(filters.filters.Invert, 'apply');
       const mockError = new Error('Error from filter');
-      filterSpy.mockImplementation(() => { throw mockError; });
+      filterSpy.mockImplementation(() => {
+        throw mockError;
+      });
       const jsResult = await filters.apply('Invert', imageData);
       const wasmResult = await filters.apply('Invert', imageData, { useWasm: true });
       expect(jsResult.message).toEqual('Error while inverting image using JavaScript');
@@ -214,14 +240,16 @@ describe('Tests for Filters', () => {
       const wasmResult = await filters.apply('Sharpen', imageData, { useWasm: true });
       await expect(diff(jsResult.value, wasmResult.value)).resolves.toEqual({
         diffCount: 0,
-        diffPercentage: 0,
+        diffPercentage: 0
       });
     });
     it('produces correct error messages', async () => {
       const imageData = { width: 1, height: 1, data: new Uint8ClampedArray([1, 2, 3, 4]) };
       const filterSpy = jest.spyOn(filters.filters.Sharpen, 'apply');
       const mockError = new Error('Error from filter');
-      filterSpy.mockImplementation(() => { throw mockError; });
+      filterSpy.mockImplementation(() => {
+        throw mockError;
+      });
       const jsResult = await filters.apply('Sharpen', imageData);
       const wasmResult = await filters.apply('Sharpen', imageData, { useWasm: true });
       expect(jsResult.message).toEqual('Error while sharpening image using JavaScript');

@@ -6,7 +6,7 @@ export function timed(fn) {
   const value = fn();
   return {
     value,
-    duration: perf.now() - start,
+    duration: perf.now() - start
   };
 }
 

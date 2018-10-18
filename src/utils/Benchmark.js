@@ -8,21 +8,23 @@ export default class Benchmark {
     this.filters = new Filters();
   }
   async run() {
-    const results = [];
     await this.filters.build();
-    for (const task of this.tasks) {
-      const taskResult = await this.runTask(task);
-      results.push(taskResult);
-      this.onProgress(taskResult);
-    };
-    return results;
+    return Promise.all(
+      this.tasks.map(async task => {
+        const taskResult = await this.runTask(task);
+        this.onProgress(taskResult);
+        return taskResult;
+      })
+    );
   }
   async runTask(task) {
     const results = [];
-    await Promise.all(this.images.map(async (image) => {
-      const result = await this.filters.apply(task.name, image, task.config);
-      results.push(result);
-    }));
+    await Promise.all(
+      this.images.map(async image => {
+        const result = await this.filters.apply(task.name, image, task.config);
+        results.push(result);
+      })
+    );
     const duration = results.reduce((total, result) => total + result.duration, 0);
     const average = duration / this.images.length;
     return { duration, average, ...task };

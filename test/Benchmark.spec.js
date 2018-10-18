@@ -7,7 +7,7 @@ describe('Tests for Benchmark', () => {
       { id: 1, name: 'BoxBlur', config: {} },
       { id: 2, name: 'BoxBlur', config: { useWasm: true } },
       { id: 3, name: 'Cooling', config: {} },
-      { id: 4, name: 'Cooling', config: { useWasm: true } },
+      { id: 4, name: 'Cooling', config: { useWasm: true } }
     ];
     const onProgress = jest.fn();
     const benchmark = new Benchmark(tasks, images, onProgress);

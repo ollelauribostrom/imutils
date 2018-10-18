@@ -16,8 +16,13 @@ export default class Filter {
       const adress = this.wasm.exports.create_buffer(size);
       const wasmArray = new Uint8ClampedArray(this.wasm.memory.buffer, adress, size);
       wasmArray.set(imageData.data);
-      const result = this.wasm.exports[this.exported](adress, imageData.width, imageData.height, size);
-      for (let i = 0; i < size; i++) {
+      const result = this.wasm.exports[this.exported](
+        adress,
+        imageData.width,
+        imageData.height,
+        size
+      );
+      for (let i = 0; i < size; i += 1) {
         output.push(this.wasm.memory.U8[result / Uint8Array.BYTES_PER_ELEMENT + i]);
       }
       this.wasm.exports.destroy_buffer(adress);
