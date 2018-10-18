@@ -19,12 +19,12 @@ export default class Benchmark {
   }
   async runTask(task) {
     const results = [];
-    this.images.forEach(async (image) => {
+    await Promise.all(this.images.map(async (image) => {
       const result = await this.filters.apply(task.name, image, task.config);
       results.push(result);
-    });
+    }));
     const duration = results.reduce((total, result) => total + result.duration, 0);
     const average = duration / this.images.length;
-    return { duration, average, ...task };
+    return { duration, average, ...task, results };
   }
 }

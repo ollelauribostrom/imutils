@@ -2,11 +2,12 @@ const path = require('path');
 const fs = require('fs');
 const getPixels = require('get-pixels');
 const { Benchmark, time } = require('../dist');
+const utils = require('uint8clampedarray-utils');
 
 const OUTPUT_PATH = 'benchmark/results.json';
 const BENCHMARKS = [];
 let NUMBER_OF_IMAGES = 0;
-const NUMBER_OF_RUNS = 10;
+const NUMBER_OF_RUNS = 1;
 const TASKS = [
   { id: 1, name: 'BoxBlur', config: {} },
   { id: 2, name: 'BoxBlur', config: { useWasm: true } },
@@ -18,7 +19,11 @@ function asyncGetPixel(imagePath) {
       if (err) {
         return reject(err);
       }
-      return resolve(new Uint8ClampedArray(pixels.data));
+      return resolve({
+        width: pixels.shape[0],
+        height: pixels.shape[1],
+        data: new Uint8ClampedArray(pixels.data),
+      });
     });
   });
 }
@@ -34,8 +39,8 @@ function getSummary(r) {
   const results = [].concat(...r);
   return TASKS.map((task) => {
     const taskResults = results.filter(result => result.id === task.id);
-    const duration = time.round(taskResults.reduce((total, result) => total + result.duration, 0), 2);
-    const average = time.round(duration / taskResults.length, 2);
+    const duration = taskResults.reduce((total, result) => total + result.duration, 0);
+    const average = duration / taskResults.length;
     return { ...task, duration, average };
   });
 }
@@ -69,8 +74,10 @@ getImages()
     return Promise.all(BENCHMARKS.map(b => b.run()));
   })
   .then((results) => {
+    const diff = utils.diffSync(results[0][0].results[0].value, results[0][1].results[0].value, 4);
+    console.log(results[0][1].results[0].value);
     const summary = getSummary(results);
     printSummary(summary);
-    writeToFile(summary, results);
+    //writeToFile(summary, results);
   })
   .catch(err => console.log(err));

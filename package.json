@@ -16,7 +16,8 @@
     "eslint-plugin-react": "^7.5.1",
     "flow-bin": "^0.83.0",
     "get-pixels": "^3.3.2",
-    "jest": "^22.4.3"
+    "jest": "^22.4.3",
+    "uint8clampedarray-utils": "^1.0.3"
   },
   "scripts": {
     "start": "babel src -D -d dist --watch",

@@ -14,7 +14,8 @@ module.exports = {
     "no-unused-vars": ["error", {
       "varsIgnorePattern": "chai|should",
       "ignoreRestSiblings": true,
-    }]
+    }],
+    "import/prefer-default-export": 0
   },
   "globals": {
     "describe": true,
