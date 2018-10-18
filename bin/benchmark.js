@@ -1,8 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const getPixels = require('get-pixels');
-const { Benchmark, time } = require('../dist');
-const utils = require('uint8clampedarray-utils');
+const { Benchmark } = require('../dist');
 
 const OUTPUT_PATH = 'benchmark/results.json';
 const BENCHMARKS = [];
@@ -74,10 +73,8 @@ getImages()
     return Promise.all(BENCHMARKS.map(b => b.run()));
   })
   .then((results) => {
-    const diff = utils.diffSync(results[0][0].results[0].value, results[0][1].results[0].value, 4);
-    console.log(results[0][1].results[0].value);
     const summary = getSummary(results);
     printSummary(summary);
-    //writeToFile(summary, results);
+    writeToFile(summary, results);
   })
   .catch(err => console.log(err));

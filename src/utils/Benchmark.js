@@ -25,6 +25,6 @@ export default class Benchmark {
     }));
     const duration = results.reduce((total, result) => total + result.duration, 0);
     const average = duration / this.images.length;
-    return { duration, average, ...task, results };
+    return { duration, average, ...task };
   }
 }

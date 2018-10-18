@@ -7,7 +7,6 @@ const filters = new Filters();
 TODO:
 - Use pngjs-image to construct images to test each algorithm with and make sure that there
   is no output diff and possibly that they matches image snapshots
-- Verify that each filter works in the browser
 */
 
 describe('Tests for Filters', () => {
