@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for Filters BoxBlur correctly applies the box blur filter using JavaScript 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters BoxBlur correctly applies the box blur filter using WebAssembly 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Cooling correctly applies the cooling filter using JavaScript 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Cooling correctly applies the cooling filter using WebAssembly 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters GaussianBlur correctly applies the gaussian blur filter using JavaScript 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters GaussianBlur correctly applies the gaussian blur filter using WebAssembly 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Grayscale correctly applies the grayscale filter using JavaScript 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Grayscale correctly applies the grayscale filter using WebAssembly 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Invert correctly applies the inversion filter using JavaScript 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Invert correctly applies the inversion filter using WebAssembly 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Sharpen correctly applies the sharpening filter using JavaScript 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
+
+exports[`Tests for Filters Sharpen correctly applies the sharpening filter using WebAssembly 1`] = `
+Uint8ClampedArray [
+  1,
+  4,
+  9,
+  16,
+]
+`;
