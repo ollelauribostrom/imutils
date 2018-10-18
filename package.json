@@ -1,6 +1,6 @@
 {
   "name": "imutils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Image processing & object detection utils",
   "main": "dist/index.js",
   "devDependencies": {
@@ -11,14 +11,21 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.13.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.5.1",
-    "jest": "^22.4.3"
+    "jest": "^22.4.3",
+    "prettier": "^1.14.3",
+    "prettier-eslint": "^8.8.2",
+    "uint8clampedarray-utils": "^1.0.3"
   },
   "scripts": {
     "start": "babel src -D -d dist --watch",
-    "build": "babel src -D -d dist",
+    "build": "npm run compile && babel src -D -d dist",
+    "compile": "node bin/build.js",
+    "benchmark": "npm run build && node bin/benchmark.js",
     "prepare": "npm run build",
     "test": "jest",
     "coverage": "jest --coverage",
@@ -28,7 +35,9 @@
   "author": "Olle Lauri Boström <ollebostr@gmail.com> (https://github.com/ollelauribostrom)",
   "license": "MIT",
   "dependencies": {
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "webassembly": "^0.11.0",
+    "get-pixels": "^3.3.2"
   },
   "directories": {
     "test": "test"
@@ -62,7 +71,10 @@
   },
   "homepage": "https://github.com/ollelauribostrom/imutils#readme",
   "jest": {
-    "coverageDirectory": "<rootDir>/test/coverage"
+    "coverageDirectory": "<rootDir>/test/coverage",
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js"
+    ]
   },
   "eslintIgnore": [
     "/test/coverage",

@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "files.associations": {
+    "webassembly.h": "c"
+  }
+}

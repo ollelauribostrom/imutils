@@ -1,27 +1,19 @@
 module.exports = {
-  "extends": "airbnb",
-  "plugins": [
-      "react",
-      "jsx-a11y",
-      "import"
-  ],
-  "env": {
-    "node": true,
-    "browser": true
+  parser: 'babel-eslint',
+  extends: ['airbnb', 'prettier'],
+  plugins: ['react', 'jsx-a11y', 'import', 'prettier'],
+  env: {
+    node: true,
+    browser: true,
+    jest: true
   },
-  "rules": {
-    "no-console": 0,
-    "no-unused-vars": ["error", {
-      "varsIgnorePattern": "chai|should",
-      "ignoreRestSiblings": true,
-    }]
-  },
-  "globals": {
-    "describe": true,
-    "before": true,
-    "it": true,
-    "expect": true,
-  },
-  "parser": "babel-eslint",
+  rules: {
+    'prettier/prettier': ['error'],
+    'no-use-before-define': 0,
+    'lines-between-class-members': 0,
+    'import/prefer-default-export': 0,
+    'no-console': 0,
+    'global-require': 0,
+    'import/no-dynamic-require': 0
+  }
 };
-

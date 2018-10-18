@@ -1,3 +1,8 @@
 src
 test
-.idea
+.vscode
+benchmark
+bin
+.babelrc
+.eslintrc.js
+.prettierrc
