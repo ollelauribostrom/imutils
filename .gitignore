@@ -1,22 +1,8 @@
-# Logs
 logs
 *.log
 npm-debug.log
-
-# Coverage directory
 coverage
-
-# Dependency directories
 node_modules
-
-# dotenv environment variables file
-.env
-
-# Dist folder
 dist
-
-# Misc
 .DS_Store
-.idea
-.vscode
 benchmark/results.json
