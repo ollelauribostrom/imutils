@@ -9,7 +9,7 @@ let NUMBER_OF_IMAGES = 0;
 const NUMBER_OF_RUNS = 1;
 const TASKS = [
   { id: 1, name: 'BoxBlur', config: {} },
-  { id: 2, name: 'BoxBlur', config: { useWasm: true } },
+  { id: 2, name: 'BoxBlur', config: { useWasm: true } }
 ];
 
 function asyncGetPixel(imagePath) {
@@ -21,7 +21,7 @@ function asyncGetPixel(imagePath) {
       return resolve({
         width: pixels.shape[0],
         height: pixels.shape[1],
-        data: new Uint8ClampedArray(pixels.data),
+        data: new Uint8ClampedArray(pixels.data)
       });
     });
   });
@@ -29,14 +29,16 @@ function asyncGetPixel(imagePath) {
 
 function getImages() {
   const files = fs.readdirSync(path.resolve('./benchmark'));
-  const images = files.filter(file => path.extname(file) === '.jpg' || path.extname(file) === '.png');
+  const images = files.filter(
+    file => path.extname(file) === '.jpg' || path.extname(file) === '.png'
+  );
   const imagePaths = images.map(image => path.join('./benchmark', image));
   return Promise.all(imagePaths.map(imagePath => asyncGetPixel(imagePath)));
 }
 
 function getSummary(r) {
   const results = [].concat(...r);
-  return TASKS.map((task) => {
+  return TASKS.map(task => {
     const taskResults = results.filter(result => result.id === task.id);
     const duration = taskResults.reduce((total, result) => total + result.duration, 0);
     const average = duration / taskResults.length;
@@ -65,14 +67,14 @@ function writeToFile(summary, runs) {
 }
 
 getImages()
-  .then((imageArray) => {
+  .then(imageArray => {
     NUMBER_OF_IMAGES = imageArray.length;
     for (let i = 0; i < NUMBER_OF_RUNS; i += 1) {
       BENCHMARKS.push(new Benchmark(TASKS, imageArray, () => {}));
     }
     return Promise.all(BENCHMARKS.map(b => b.run()));
   })
-  .then((results) => {
+  .then(results => {
     const summary = getSummary(results);
     printSummary(summary);
     writeToFile(summary, results);

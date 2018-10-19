@@ -11,6 +11,8 @@ export default class Filter {
   }
   apply(imageData, config) {
     if (config.useWasm) {
+      // https://github.com/WebAssembly/design/issues/1231
+      // https://becominghuman.ai/passing-and-returning-webassembly-array-parameters-a0f572c65d97
       const output = [];
       const size = imageData.data.length;
       const adress = this.wasm.exports.create_buffer(size);
